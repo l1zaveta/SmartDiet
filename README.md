@@ -54,25 +54,27 @@ streamlit run app.py
 ##  Архитектура
 
 ```
-smartdiet/
-├── app.py              # Streamlit UI
-├── gpt.py              # Yandex AI Studio API
-├── prompts.py          # Системный промпт с медпрофилем
-├── storage.py          # JSON-хранилище профиля и истории
-├── nutrition.py        # База нутриентов, расчёт КБЖУ
-├── rag.py              # RAG-поиск по базе рецептов
-├── knowledge_base/
-│   └── recipes.json    # База рецептов
-├── .env.example        # Шаблон переменных окружения
-└── requirements.txt
+
+app.py - Streamlit UI
+gpt.py - Yandex AI Studio API
+prompts.py - Системный промпт с медпрофилем
+storage.py - JSON-хранилище профиля и истории
+nutrition.py - База нутриентов, расчёт КБЖУ
+rag.py - RAG-поиск по базе рецептов
+recipes.json - База рецептов
+
 ```
 
 ### Поток данных
 
 ```
-Ввод ингредиентов → Проверка аллергенов → RAG-поиск →
-Сборка промпта (медпрофиль + ингредиенты + RAG) →
-YandexGPT → Стриминг в UI → Сохранение в историю
+1 Ввод ингредиентов
+2 Проверка аллергенов
+3 RAG-поиск 
+4 Сборка промпта (медпрофиль + ингредиенты + RAG) 
+5 YandexGPT
+6 Стриминг в UI
+7 Сохранение в историю
 ```
 
 
