@@ -5,9 +5,8 @@ import streamlit as st
 
 
 def ask_yandex_gpt(system_prompt: str, user_message: str):
-
-    api_key   = os.getenv("YANDEX_API_KEY")
-    folder_id = os.getenv("YANDEX_FOLDER_ID")
+    api_key = st.secrets.get("YANDEX_API_KEY") or os.getenv("YANDEX_API_KEY")
+    folder_id = st.secrets.get("YANDEX_FOLDER_ID") or os.getenv("YANDEX_FOLDER_ID")
 
     if not api_key or not folder_id:
         st.error("❌ Не найдены YANDEX_API_KEY или YANDEX_FOLDER_ID в файле .env")
