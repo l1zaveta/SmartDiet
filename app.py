@@ -1,7 +1,6 @@
 import streamlit as st
 import re
 from math import floor
-from dotenv import load_dotenv
 from prompts import build_system_prompt, build_recipe_prompt
 from gpt import ask_yandex_gpt
 from storage import save_profile, load_profile, delete_profile, save_recipe, load_history, clear_history, \
@@ -9,7 +8,11 @@ from storage import save_profile, load_profile, delete_profile, save_recipe, loa
 from rag import search_recipe, format_rag_context
 from nutrition import check_allergens
 
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  
 
 st.set_page_config(
     page_title="SmartDiet - персональный нутрициолог",
